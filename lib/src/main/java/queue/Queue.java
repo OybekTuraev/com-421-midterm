@@ -1,7 +1,5 @@
 package queue;
 
-import java.util.NoSuchElementException;
-
 public class Queue<T> {
     private Node front;
     private Node rear;
@@ -37,6 +35,22 @@ public class Queue<T> {
             oldRear.next = rear;
         }
         n++;
+    }
+
+    public T dequeue() {
+        if (isEmpty()) throw new NoSuchElementException("The queue is empty");
+        T item = front.item;
+        front = front.next;
+        n--;
+        if (isEmpty()) {
+            rear = null;
+        }
+        return item;
+    }
+
+    public T peek() {
+        if (isEmpty()) throw new NoSuchElementException("The queue is empty");
+        return front.item;
     }
 
 }
