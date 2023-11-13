@@ -18,4 +18,25 @@ public class Queue<T> {
         n = 0;
     }
     
+    public boolean isEmpty() {
+        return front == null;
+    }
+
+    public int size() {
+        return n;
+    }
+
+    public void enqueue(T item) {
+        Node oldRear = rear;
+        rear = new Node();
+        rear.item = item;
+        rear.next = null;
+        if (isEmpty()) {
+            front = rear;
+        } else {
+            oldRear.next = rear;
+        }
+        n++;
+    }
+
 }
